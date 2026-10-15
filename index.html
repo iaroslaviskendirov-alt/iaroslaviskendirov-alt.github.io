@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ярослав — веб-разработчик</title>
+<meta name="description" content="Сайты, веб-приложения и демо-проекты Ярослава: живые ссылки и исходный код.">
+<style>
+  :root {
+    --bg: #FAFAF9;
+    --text: #18181B;
+    --text-2: #71717A;
+    --line: #E7E5E4;
+    --card: #FFFFFF;
+    --accent: #4F46E5;
+    --chip: #F4F4F5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0C0C0E;
+      --text: #F4F4F5;
+      --text-2: #A1A1AA;
+      --line: #27272A;
+      --card: #141417;
+      --accent: #818CF8;
+      --chip: #1F1F23;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 16px 64px; }
+
+  header h1 { font-size: clamp(30px, 6vw, 42px); line-height: 1.1; letter-spacing: -.02em; margin: 0 0 12px; }
+  header p { color: var(--text-2); font-size: 18px; margin: 0; max-width: 560px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .link { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 16px; border-radius: 10px;
+    border: 1px solid var(--line); color: var(--text); text-decoration: none; font-weight: 600; font-size: 15px; }
+  .link:hover { border-color: var(--text-2); }
+  .link.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-2); margin: 56px 0 16px; font-weight: 700; }
+
+  .projects { display: grid; gap: 12px; }
+  .project { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+  .top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .project h3 { margin: 0; font-size: 19px; letter-spacing: -.01em; }
+  .kind { font-size: 13px; color: var(--text-2); }
+  .project p { margin: 8px 0 12px; color: var(--text-2); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .tag { font-size: 12.5px; padding: 3px 9px; border-radius: 999px; background: var(--chip); color: var(--text-2); }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  .actions a { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border-radius: 9px;
+    font-weight: 600; font-size: 14.5px; text-decoration: none; border: 1px solid var(--line); color: var(--text); }
+  .actions a.site { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .actions a:hover { filter: brightness(1.08); }
+  .note { font-size: 13px; color: var(--text-2); margin: 10px 0 0; }
+
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--text-2); font-size: 14px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Ярослав</h1>
+    <p>Делаю сайты, веб-приложения и Telegram-ботов. Ниже — мои работы: у каждой есть живая ссылка или исходный код.</p>
+    <div class="links" id="contacts"></div>
+  </header>
+
+  <h2>Работы</h2>
+  <div class="projects" id="projects"></div>
+
+  <footer>© <span id="year"></span> Ярослав</footer>
+</main>
+
+<script>
+// ============================================================
+//  НАСТРОЙКИ — контакты и список работ
+// ============================================================
+const CONTACTS = {
+  github: 'https://github.com/iaroslaviskendirov-alt',
+  telegram: '',   // например 'https://t.me/ваш_ник'
+  whatsapp: '',   // например 'https://wa.me/77011234567'
+  email: '',      // например 'mailto:you@mail.com'
+};
+
+// site — живая ссылка (если есть), code — репозиторий, note — пометка под кнопками
+const PROJECTS = [
+  {
+    title: 'Пластинка',
+    kind: 'Интернет-магазин',
+    desc: 'Магазин виниловых пластинок: каталог с поиском и фильтрами, корзина, оформление заказа и админ-панель с графиком выручки и управлением заказами.',
+    tags: ['Node.js', 'Express', 'SQLite', 'REST API', 'JavaScript'],
+    site: 'https://plastinka-shop-iaroslav.onrender.com',
+    code: 'https://github.com/iaroslaviskendirov-alt/plastinka-shop',
+    note: 'Бесплатный хостинг: первое открытие может занять до минуты.',
+  },
+  {
+    title: 'Жауап — ГДЗ для ЕНТ',
+    kind: 'Образовательный сайт',
+    desc: 'Задания в формате ЕНТ по девяти предметам с проверкой ответа и разбором, пробный тест с таймером, формулы, хронология и калькулятор баллов.',
+    tags: ['JavaScript', 'KaTeX', 'Тёмная тема'],
+    site: 'https://iaroslaviskendirov-alt.github.io/gdz/',
+    code: 'https://github.com/iaroslaviskendirov-alt/gdz',
+  },
+  {
+    title: 'APEX Racing',
+    kind: 'Лендинг',
+    desc: 'Промо-сайт тюнинг-студии гиперкаров: эффектный первый экран и страницы четырёх автомобилей.',
+    tags: ['HTML', 'CSS', 'JavaScript', 'Анимации'],
+    site: 'https://iaroslaviskendirov-alt.github.io/apex/',
+    code: 'https://github.com/iaroslaviskendirov-alt/apex',
+  },
+  {
+    title: 'GameHub',
+    kind: 'Концепт для компьютерного клуба',
+    desc: 'Сайт с залами, характеристиками ПК и ценами. Онлайн-бронь: выбор зала, тарифа и времени, заявка с суммой уходит в WhatsApp.',
+    tags: ['HTML', 'CSS', 'JavaScript', 'Mobile first'],
+    site: 'https://iaroslaviskendirov-alt.github.io/gamehub-demo/',
+    code: 'https://github.com/iaroslaviskendirov-alt/gamehub-demo',
+  },
+  {
+    title: 'DamDay',
+    kind: 'Концепт для кафе',
+    desc: 'Онлайн-меню с корзиной: клиент собирает заказ, а кафе получает его готовым сообщением в WhatsApp, без комиссии агрегаторов.',
+    tags: ['HTML', 'CSS', 'JavaScript', 'Mobile first'],
+    site: 'https://iaroslaviskendirov-alt.github.io/damday-demo/',
+    code: 'https://github.com/iaroslaviskendirov-alt/damday-demo',
+  },
+  {
+    title: 'Trailhead',
+    kind: 'Веб-приложение',
+    desc: 'Каталог пеших маршрутов: поиск и фильтры, страницы маршрутов, отзывы с рейтингом, добавление маршрутов с валидацией. REST API с тестами.',
+    tags: ['Node.js', 'Express', 'SQLite', 'REST API', 'Тесты'],
+    code: 'https://github.com/iaroslaviskendirov-alt/trailhead',
+  },
+];
+
+// ============================================================
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+const contactLabels = { telegram: 'Telegram', whatsapp: 'WhatsApp', email: 'Почта', github: 'GitHub' };
+document.getElementById('contacts').innerHTML = Object.entries(CONTACTS)
+  .filter(([, url]) => url)
+  .sort(([a], [b]) => (a === 'github') - (b === 'github'))   // мессенджеры первыми, GitHub последним
+  .map(([key, url], i) => `<a class="link ${i === 0 ? 'primary' : ''}" href="${esc(url)}" target="_blank" rel="noopener">${contactLabels[key]}</a>`)
+  .join('');
+
+document.getElementById('projects').innerHTML = PROJECTS.map((p) => `
+  <article class="project">
+    <div class="top"><h3>${esc(p.title)}</h3><span class="kind">${esc(p.kind)}</span></div>
+    <p>${esc(p.desc)}</p>
+    <div class="tags">${p.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+    <div class="actions">
+      ${p.site ? `<a class="site" href="${esc(p.site)}" target="_blank" rel="noopener">Открыть сайт ↗</a>` : ''}
+      ${p.code ? `<a href="${esc(p.code)}" target="_blank" rel="noopener">Код на GitHub</a>` : ''}
+    </div>
+    ${p.note ? `<p class="note">${esc(p.note)}</p>` : ''}
+  </article>`).join('');
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

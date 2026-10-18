@@ -14,6 +14,16 @@ const img = (name: string, ext = 'png') => `${import.meta.env.BASE_URL}works/${n
 
 export const WORKS: Work[] = [
   {
+    id: 'zerno',
+    title: 'ZERNO',
+    kind: 'Концепт кофейни',
+    desc: 'Веер из фото блюд на GSAP, меню с фото и ценами по разделам, галерея интерьеров и бронь стола с выбором времени и зоны.',
+    image: img('zerno', 'jpg'),
+    url: 'https://iaroslaviskendirov-alt.github.io/zerno/',
+    code: 'https://github.com/iaroslaviskendirov-alt/zerno',
+    tags: ['GSAP', 'React', 'Mobile first'],
+  },
+  {
     id: 'horizon',
     title: 'HORIZON',
     kind: 'Концепт иммерсивного планетария',

@@ -14,6 +14,16 @@ const img = (name: string, ext = 'png') => `${import.meta.env.BASE_URL}works/${n
 
 export const WORKS: Work[] = [
   {
+    id: 'atlas',
+    title: 'ATLAS',
+    kind: 'Концепт школы языков',
+    desc: 'Интерактивный глобус с флагами: поиск страны поворачивает глобус к ней, клик по флагу открывает курс со сложностью, сроком и ценой.',
+    image: img('atlas', 'jpg'),
+    url: 'https://iaroslaviskendirov-alt.github.io/atlas/',
+    code: 'https://github.com/iaroslaviskendirov-alt/atlas',
+    tags: ['3D', 'three.js', 'cobe', 'React'],
+  },
+  {
     id: 'zerno',
     title: 'ZERNO',
     kind: 'Концепт кофейни',

@@ -10,9 +10,19 @@ export interface Work {
   tags: string[]
 }
 
-const img = (name: string) => `${import.meta.env.BASE_URL}works/${name}.png`
+const img = (name: string, ext = 'png') => `${import.meta.env.BASE_URL}works/${name}.${ext}`
 
 export const WORKS: Work[] = [
+  {
+    id: 'horizon',
+    title: 'HORIZON',
+    kind: 'Концепт иммерсивного планетария',
+    desc: 'Живая чёрная дыра на WebGL-шейдере с 5 цветами диска, док в стиле macOS, программа шоу и покупка билетов с расчётом суммы.',
+    image: img('horizon', 'jpg'),
+    url: 'https://iaroslaviskendirov-alt.github.io/horizon/',
+    code: 'https://github.com/iaroslaviskendirov-alt/horizon',
+    tags: ['WebGL', 'React', 'framer-motion'],
+  },
   {
     id: 'volt',
     title: 'VOLT Arena',

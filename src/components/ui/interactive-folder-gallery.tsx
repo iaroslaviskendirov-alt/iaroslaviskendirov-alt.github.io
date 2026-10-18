@@ -95,9 +95,10 @@ export function InteractiveFolderGallery({
                 zIndex: i + 10,
               }
               // первая работа — слева вверху; строки отсчитываются снизу, потому что фото привязаны к низу сцены
-              const col = i % cols, rowFromBottom = rows - 1 - Math.floor(i / cols)
+              const row = Math.floor(i / cols), col = i % cols, rowFromBottom = rows - 1 - row
+              const inRow = Math.min(cols, n - row * cols) // неполный последний ряд центрируем
               const open = {
-                x: (col - (cols - 1) / 2) * (card.w + gap),
+                x: (col - (inRow - 1) / 2) * (card.w + gap),
                 y: -rowFromBottom * (card.h + gap) + 24,
                 rotate: 0, scale: 1, zIndex: 50,
               }

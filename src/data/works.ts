@@ -14,6 +14,16 @@ const img = (name: string, ext = 'png') => `${import.meta.env.BASE_URL}works/${n
 
 export const WORKS: Work[] = [
   {
+    id: 'aq-saray',
+    title: 'AQ SARAY',
+    kind: 'Концепт сайта отеля',
+    desc: 'Онлайн-бронь с расчётом цены под даты и гостей, доп. услуги и заявки, которые сразу приходят администратору в Telegram-бот.',
+    image: img('aq-saray', 'jpg'),
+    url: 'https://iaroslaviskendirov-alt.github.io/aq-saray/',
+    code: 'https://github.com/iaroslaviskendirov-alt/aq-saray',
+    tags: ['Бронь', 'Telegram-бот', 'React'],
+  },
+  {
     id: 'atlas',
     title: 'ATLAS',
     kind: 'Концепт школы языков',
